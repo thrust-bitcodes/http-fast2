@@ -15,7 +15,7 @@ const exec = (describe, it, beforeEach, afterEach, expect, should, assert) => {
                     throw new Error('No response code: ' + response.code)
                 }
                 let header = response.headers
-                let cookie = header['Set-Cookie']
+                let cookie = header['Set-Cookie'].split(';')[0]
                 response = httpClient.get(`${URL}/api/v1/products/find-all`)
                     .headers({Cookie: cookie})
                     .fetch()
