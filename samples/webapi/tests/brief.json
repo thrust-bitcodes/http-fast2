@@ -1,0 +1,17 @@
+{
+  "path": "src",
+  "name": "tests",
+  "description": "Thrust project",
+  "main": "cases/index.js",
+  "version": "0.0.1",
+  "dependencies": [
+    "majesty",
+    "http-client",
+    "database",
+    "filesystem@0.1.1",
+    "http-fast2",
+    "com.fasterxml.uuid:java-uuid-generator:3.2.0",
+    "org.postgresql:postgresql:42.2.8",
+    "auth"
+  ]
+}

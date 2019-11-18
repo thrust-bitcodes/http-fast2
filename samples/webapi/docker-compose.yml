@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  http-fast2-sample-pg:
+    container_name: http-fast2-sample-pg
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_PASSWORD: senha
+    stdin_open: true
+    volumes:
+      - /var/lib/postgresql
+      - /etc/localtime:/etc/localtime
+      - /etc/Timezone:/etc/Timezone:ro
+      - ./sqls/docker-init-pg.sql:/docker-entrypoint-initdb.d/docker-init-pg.sql
+      - ./sqls/docker-sample-pg.sql:/docker-entrypoint-initdb.d/docker-sample-pg.sql
+    tty: true
+    healthcheck:
+      test: ["CMD-SHELL", "pg-isready -U postgres -d teste"]
+      interval: 6s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432/tcp

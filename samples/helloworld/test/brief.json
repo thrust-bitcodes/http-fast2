@@ -1,0 +1,7 @@
+{
+  "path": "src",
+  "name": "test",
+  "description": "Thrust project",
+  "version": "0.0.1",
+  "dependencies": ["http-client@1.4.0"]
+}

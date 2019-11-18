@@ -1,0 +1,13 @@
+{
+    "name": "http-fast2",
+    "description": "Bitcode for HTTP requests and routes",
+    "path": "lib",
+    "version": "0.0.1",
+    "author": [
+        "Cleverson Puche",
+        "Fábio Franco"
+    ],
+    "dependencies": [
+        ":./http-fast2-0.0.1.jar:"
+    ]
+}

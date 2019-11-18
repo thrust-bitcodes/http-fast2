@@ -1,0 +1,8 @@
+{
+  "path": "src",
+  "name": "helloworld",
+  "description": "Thrust project",
+  "main": "src/index.js",
+  "version": "0.0.1",
+  "dependencies": ["http-fast2"]
+}

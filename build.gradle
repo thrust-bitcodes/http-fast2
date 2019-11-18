@@ -1,0 +1,73 @@
+plugins {
+    id 'java-library'
+    id "com.github.spotbugs" version "2.0.0"
+    id 'eclipse'
+    id 'idea'
+    id 'jacoco'
+}
+
+version = '0.0.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'org.graalvm.js:js:19.2.0.1'
+    compile 'org.graalvm.sdk:graal-sdk:19.2.0.1'
+    compile files('depends/thrust.jar')
+    
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testImplementation 'org.graalvm.tools:chromeinspector:19.2.0.1'
+	testImplementation 'org.glassfish.jersey.core:jersey-client:2.29.1'
+	testImplementation 'org.glassfish.jersey.inject:jersey-hk2:2.29.1'
+	testImplementation 'org.glassfish.jersey.media:jersey-media-json-jackson:2.29.1'
+	
+	testImplementation 'org.json:json:20190722'
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+}
+
+
+spotbugs {
+	toolVersion = '3.1.12'
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+  	reports {
+		xml.enabled = false
+		html.enabled = true
+	}
+}
+
+task copyJar(type: Copy) {
+	dependsOn 'build'
+
+	from "$buildDir/libs"
+	include '*.jar'
+
+	into "${projectDir}"
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+

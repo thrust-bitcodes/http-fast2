@@ -1,0 +1,15 @@
+{
+  "path": "src",
+  "name": "webapi",
+  "description": "Thrust sample project for http-fast2 and database",
+  "main": "src/index.js",
+  "version": "0.0.1",
+  "dependencies": [
+    "database",
+    "filesystem@0.1.1",
+    "http-fast2",
+    "auth",
+    "com.fasterxml.uuid:java-uuid-generator:3.2.0",
+    "org.postgresql:postgresql:42.2.8"
+  ]
+}
